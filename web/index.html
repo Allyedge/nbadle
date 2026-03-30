@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NBAdle</title>
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏀</text></svg>" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:ital,wght@0,400;0,600;0,700;1,400;1,700&family=Teko:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="app">
+
+  <header class="site-header">
+    <h1 class="title-scoreboard">
+      <a href="/" class="title-home-link" aria-label="NBAdle — go to home">NBAdle</a>
+    </h1>
+    <div class="difficulty-nav" id="difficulty-nav" role="group" aria-label="Game difficulty">
+      <button type="button" class="difficulty-nav-btn" data-difficulty="easy" aria-pressed="false">Easy</button>
+      <button type="button" class="difficulty-nav-btn" data-difficulty="hard" aria-pressed="false">Hard</button>
+    </div>
+  </header>
+
+  <div id="player-mystery" class="player-mystery" hidden>
+    <div class="silhouette-wrap">
+      <div id="player-img" class="player-img silhouette" role="img" aria-hidden="true"></div>
+      <button id="btn-reveal" class="btn-reveal" type="button">Show Silhouette</button>
+    </div>
+  </div>
+
+  <div class="top-switches">
+    <mode-switcher mode="classic"></mode-switcher>
+  </div>
+
+  <game-board mode="classic" maxGuesses="8"></game-board>
+
+  <div class="guess-counter-row">
+    <div id="guess-counter" class="guess-counter" aria-label="Guesses remaining">
+      <div class="guess-pip"></div>
+      <div class="guess-pip"></div>
+      <div class="guess-pip"></div>
+      <div class="guess-pip"></div>
+      <div class="guess-pip"></div>
+      <div class="guess-pip"></div>
+      <div class="guess-pip"></div>
+      <div class="guess-pip"></div>
+    </div>
+  </div>
+
+  <div class="guess-input-wrap">
+    <guess-input></guess-input>
+  </div>
+  <div class="action-row">
+    <button id="btn-submit" type="button" class="btn-submit" disabled>Guess</button>
+    <button id="btn-hint" type="button" class="btn-hint">Show Hint</button>
+    <button id="btn-random" type="button" class="btn-random-inline">Randomize</button>
+  </div>
+
+  <div id="result-panel" class="result-panel" style="display:none;"></div>
+
+  <section class="continue-section" id="continue-section" style="display:none;">
+    <div class="section-label">Continue Playing</div>
+    <div class="continue-buttons">
+      <a id="btn-continue" class="btn-continue" href="#">Next Player</a>
+    </div>
+  </section>
+
+</div>
+
+<div id="toast" class="toast"></div>
+
+<script type="module">
+  import 'https://cdn.jsdelivr.net/gh/lit/dist@3/core/lit-core.min.js';
+  import './components/hint-cell.js';
+  import './components/guess-input.js';
+  import './components/game-board.js';
+  import './components/mode-switcher.js';
+  import './components/share-panel.js';
+</script>
+
+<script type="module" src="game.js"></script>
+
+</body>
+</html>
