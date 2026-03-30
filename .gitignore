@@ -7,3 +7,9 @@ node_modules/
 *.egg-info/
 dist/
 .DS_Store
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+!.env.example
